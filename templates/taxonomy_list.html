@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+{% block content %}
+
+{% for term in terms %}
+    <a href="{{term.path}}" style="color: black;text-decoration: none;"><h1 style="font-weight: bold;"># {{term.name}}</h1></a>
+    <br>
+    {% for page in term.pages | slice(end=10) %}
+        <div class="post">
+            {% if page.extra.image %}
+            <a href="{{page.path}}"><img src="{{page.extra.image}}" alt=""></a>
+            {% endif %}
+            <a href="{{page.path}}" style="text-decoration: none;color: black;"><h3>{{page.title}}</h3></a>
+            <p class="infos">{% for author in page.authors %} {{author}} {% endfor %} - {{page.date}} </p>
+            <span class="summary">{{page.summary | safe}}</span>
+            {% if page.summary %}
+            <br>
+            <a href="{{page.path}}" style="color: darkblue">-> Lire la suite</a>
+            {% else %}
+            <a href="{{page.path}}" style="color: darkblue">-> Lire l'article</a>
+            {% endif %}
+        </div>
+    {% endfor %}
+{%endfor%}
+{% endblock %}

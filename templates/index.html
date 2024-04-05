@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<h1 style="font-weight: bold;">Hey there ! 👋 </h1>
+
+<p>My name is <strong>Théo</strong> and I'm a </p>
+<ul style="list-style: none; margin-left: 25px;">
+    <li>☀️  Life enthusiast</li>
+    <li>🍻  Belgian beer lover   </li>
+    <li>📚 Engineering student  </li>
+    <li>💻 Hobbyist developer </li>
+</ul>
+
+<br>
+<p>On this website I put my projects, some blog posts as well as funny garbage :)</p>
+<br>
+<h3 style="font-weight: bold;">Don't know where to start ?</h3>
+<p>Here are my last blog posts: </p>
+<br>
+
+{% set section = get_section(path="blog/_index.md") %}
+{% for page in section.pages | slice(end=10) %}
+    <div class="post">
+        {% if page.extra.image %}
+        <a href="{{page.path}}"><img src="{{page.extra.image}}" alt=""></a>
+        {% endif %}
+        <a href="{{page.path}}" style="text-decoration: none;color: black;"><h3>{{page.title}}</h3></a>
+        <p class="infos">{% for author in page.authors %} {{author}} {% endfor %} - {{page.date}} </p>
+        <span class="summary">{{page.summary | safe}}</span>
+        {% if page.summary %}
+        <br>
+        <a href="{{page.path}}" style="color: darkblue">-> Read more</a>
+        {% endif %}
+    </div>
+{%endfor%}
+{% endblock content %}

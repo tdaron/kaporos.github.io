@@ -1,0 +1,57 @@
+article {
+    h1,h2,h3,h4,h5,h6 {
+        margin-top: 20px;
+        margin-bottom: 10px;
+        font-weight: 600;
+    }
+    th, td {
+        border: 1px solid;
+  
+    }
+    table  {
+        overflow-x: auto;
+        max-width: 100%;
+        display: block;
+        border-collapse: collapse;
+
+    }
+
+    th {
+        padding: 5px;
+        background-color: #ecf0f1;
+    }
+    td {
+        padding: 20px;
+    }
+
+    margin-bottom: 100px;
+    overflow-wrap: break-word;
+    max-width: 85vw;
+    overflow-x: hidden;
+
+}
+
+main {
+    ul {
+        list-style-type: disc; /* Bullet style */
+        margin-left: 20px; /* Left margin to separate from surrounding content */
+        margin-top: 10px;
+      }
+      
+      /* Styling ordered lists */
+      ol {
+        list-style-type: decimal; /* Numbered style */
+        margin-left: 20px; /* Left margin to separate from surrounding content */
+      }
+      
+      /* Styling list items */
+      li {
+        margin-bottom: 10px; /* Bottom margin for spacing between list items */
+      }
+}
+#toc {
+    a {
+        color: black;
+        text-decoration: none;
+    }
+}

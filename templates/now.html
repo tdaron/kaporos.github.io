@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h2 style="font-weight: bold;">What am i doing now ? 🕞</h2>
+
+This is a <a target="_blank" href="https://nownownow.com/about">now page</a>. The last time I updated it was the {{page.updated | date(format="%d of %B %Y")}}
+<br><br>
+
+Well, right now I am currently focused on :
+<br>
+
+{{page.content | safe}}
+
+{% endblock content %}
