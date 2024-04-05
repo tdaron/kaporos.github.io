@@ -15,6 +15,6 @@ taxonomies=[
 # Theme can be customised by setting the `highlight_theme` variable to a theme supported by Zola
 highlight_code = true
 
-
+#should work
 [extra]
 brand_name = "Théo' universe"
