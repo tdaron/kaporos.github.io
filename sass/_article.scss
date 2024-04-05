@@ -55,3 +55,19 @@ main {
         text-decoration: none;
     }
 }
+
+.header {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+    .date {
+        color: gray;
+    }
+
+    img {
+        width: 50%;
+        border-radius: 5px;
+      }
+}
