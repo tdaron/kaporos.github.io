@@ -3,7 +3,6 @@
 
 <head>
   <meta charset="utf-8">
-  <meta name="description" content="Hey my name is Théo, on this website I put my projects, some blog posts as well as funny garbage :)">
   <title>{{config.extra.brand_name}}</title>
   <link rel="stylesheet" href="/public.css">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.10/dist/katex.min.css">
@@ -14,7 +13,17 @@
   <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.10/dist/contrib/auto-render.min.js" onload="show_maths()"></script>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <script src="https://unpkg.com/@swup/progress-plugin@3"></script>
-  {% block meta %} {% endblock %}
+  {% block meta %} 
+  
+  <meta name="description" content="Hey my name is Théo, on this website I put my projects, some blog posts as well as funny garbage :)">
+  <meta property="og:title" content="{{config.extra.brand_name}}">
+  <meta property="og:description" content="Hey my name is Théo, on this website I put my projects, some blog posts as well as funny garbage :)">
+  <meta property="og:url" content="{{config.base_url | safe }}">
+  <meta property="og:type" content="{{config.base_url | safe }}">
+  <meta property="og:site_name" content="{{config.extra.brand_name}}">
+  
+  
+  {% endblock %}
 </head>
 
 <body>
@@ -36,7 +45,8 @@
   <main id="swup" class="transition-fade">
     <!--<div id="color" style="background-color: {{section.extra.color | default(value='white')}}"></div>-->
     <div id="content">
-    {% block content %} {% endblock %}
+    {% block content %} 
+    {% endblock %}
     </div>
 
     <div id="toc">
