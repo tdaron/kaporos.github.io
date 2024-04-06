@@ -1,7 +1,7 @@
 +++
 title="First blog post"
 date=2024-04-05
-authors=["Kaporos"]
+authors=["Théo Daron"]
 
 [extra]
 image="https://learn.microsoft.com/fr-fr/shows/hello-world/media/helloworld_383x215.png"
