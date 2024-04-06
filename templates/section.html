@@ -1,6 +1,7 @@
 {% extends "base.html" %}
 
 {% block content %}
+<h3>Do you prefer RSS? <a href="/atom.xml">It's here</a></h3>
 {% for page in section.pages %}
     <div class="post">
         {% if page.extra.image %}
