@@ -16,6 +16,7 @@
 {% endblock content %}
 
 {% block toc %}
+<div class="page-toc">
 {% if page.toc %}
     <h3>Table of contents</h3>
     <ul style="list-style: '- ';">
@@ -35,6 +36,7 @@
     {% endfor %}
     </ul>
 {% endif %}
+</div>
 {% endblock toc %}
 
 {% block meta %}
@@ -42,6 +44,8 @@
 <meta property="og:description" content="{{page.summary  | safe}}">
 {% if page.extra.image %}
 <meta property="og:image" content="{{page.extra.image | safe}}">
+{% else %}
+<meta property="og:image" content="{{config.base_url | safe }}/banner.png">
 {% endif %}
 <meta property="og:url" content="{{config.base_url | safe }}{{page.path | safe}}">
 <meta property="og:type" content="{{config.base_url | safe }}">
@@ -52,6 +56,9 @@
 {% if page.extra.image %}
 <meta name="twitter:image" content="{{page.extra.image | safe}}">
 <meta name="twitter:card" content="{{page.extra.image | safe}}">
+{% else %}
+<meta name="twitter:image" content="{{config.base_url | safe }}/banner.png">
+<meta name="twitter:card" content="{{config.base_url | safe }}/banner.png">
 {% endif %}
 <meta name="twitter:site" content="@Kaporos">
 <meta name="description" content="{{page.summary}}">

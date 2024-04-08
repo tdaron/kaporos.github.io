@@ -104,17 +104,6 @@ main {
   display: flex;
 }
 
-@media (max-width: 900px) {
-
-main {
-  flex-direction: column-reverse;
-  align-items: center;
-  padding-top: 20px;
-}
-#toc {
-  display: none;
-}
-}
 
 
 .post {
@@ -133,6 +122,63 @@ main {
     font-size: 14px;
   }
 }
+
+.projects {
+  display: flex;
+  flex-wrap: wrap;
+  .infos {
+    margin-bottom: 15px;
+  }
+  .card {
+    margin-top: 25px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px 15px;
+    border: 1px solid rgba(0,0,0,0.1);
+    border-radius: 10px;
+    box-shadow: 0 3px 10px rgb(0 0 0 / 0.2);
+    img {
+      margin-bottom: 20px;
+      border-bottom: 1px solid rgba(0,0,0,.2);
+    }
+    transition: all .2s;
+  }
+  a {
+    color: inherit;
+    text-decoration: none;
+    width: 30%;
+    margin: 10px;
+
+  }
+  .card:hover {
+    transform: translateY(-10px);
+    cursor: pointer;
+  }
+}
+
+@media (max-width: 900px) {
+
+  main {
+    flex-direction: column;
+    align-items: center;
+    padding-top: 20px;
+  }
+  .page-toc {
+    display: none;
+  }
+  .projects {
+    .card {
+      width: 85%;
+    }
+    a {
+      display: flex;
+      justify-content: center;
+      width: 100%;
+    }
+  }
+}
+  
 
 pre {
   padding: 1rem;
@@ -171,4 +217,22 @@ pre table {
 table {
   margin-top: 20px;
   margin-bottom: 20px;
+}
+
+.btn {
+  background-color: black;
+  color: white;
+  padding: 10px 20px;
+  border-radius: 5px;
+  outline: none;
+  border: none;
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  svg {
+    margin-left: 10px;
+  }
+  &:hover {
+    cursor: pointer;
+  }
 }

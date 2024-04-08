@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h3>Do you prefer RSS? <a target="_blank" href="/atom.xml">It's here</a></h3>
+<div class="projects">
+
+{% for page in section.pages %}
+    <a href="{{page.path}}"><div class="card">
+        {% if page.extra.image %}
+        <img src="{{page.extra.image}}" alt="">
+        {% endif %}
+        <h3>{{page.title}}</h3>
+        <p class="infos">{{page.date}} </p>
+        <span class="summary">{{page.summary | safe}}</span>
+        {% if page.summary %}
+        <br>
+        {% else %}
+        {% endif %}
+    </div></a>
+{% endfor %}
+</div>
+{% endblock %}
