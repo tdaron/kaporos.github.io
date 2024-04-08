@@ -13,7 +13,7 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - name: Create commits
-        run: >
+        run: |
 
           export POST_DATE=$(date +"%Y-%m-%d")
 
@@ -50,6 +50,71 @@ jobs:
 
 
           git commit -m "Publish $POST_TITLE"
+      - name: Create Pull Request
+        uses: peter-evans/create-pull-request@v5
+        with:
+          title: 'New Post: ${{ github.event.issue.title }}'
+          body: |-
+            Closes #${{ github.event.issue.number }}.
+
+             This PR has been generated automatically.
+
+      - uses: actions-ecosystem/action-remove-labels@v1
+        with:
+          labels: 'action:publish'
+on:
+  issues:
+    types:
+      - labeled
+
+name: Publish issue as post
+jobs:
+  publish-issue:
+    if: 'github.event.label.name == ''action:publish'''
+    runs-on: ubuntu-latest
+    env:
+      POST_BODY: '${{ github.event.issue.body }}'
+    steps:
+      - uses: actions/checkout@v4
+      - name: Create commits
+        run: |
+
+          export POST_DATE=$(date +"%Y-%m-%d")
+
+
+          export POST_TITLE="${{ github.event.issue.title }}"
+
+
+          export POST_TAGS=$(echo "${{ join(github.event.issue.labels.*.name, ',
+          ') }}" | grep -o 'tag:[^,]*' | cut -d: -f2- | paste -sd " " - | sed
+          's/ /, /g')
+
+
+          export FILE_TITLE=$(printf "$POST_TITLE" | tr -cs '[:alnum:]' '-' | tr
+          'A-Z' 'a-z' | sed 's/--/-/g' | sed 's/^-\|-$//g')
+
+
+          export FILE_NAME="$POST_DATE-$FILE_TITLE.md"
+          export FULL_PATH="content/blog/$FILE_NAME"
+          git config user.name 'Publish Bot'
+          git config user.email 'publish-bot@github.com'
+
+          cat << EOF > $FULL_PATH
+
+
+          +++
+          title="$POST_TITLE"
+          date=$POST_DATE
+          +++
+
+          EOF
+
+          echo "$POST_BODY" >> $FULL_PATH
+          git add $FULL_PATH
+
+
+          git commit -m "Publish $POST_TITLE"
+
       - name: Create Pull Request
         uses: peter-evans/create-pull-request@v5
         with:
