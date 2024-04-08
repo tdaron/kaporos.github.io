@@ -55,9 +55,11 @@
 <meta name="twitter:description" content="{{page.summary  | safe}}">
 {% if page.extra.image %}
 <meta name="twitter:image" content="{{page.extra.image | safe}}">
-<meta name="twitter:card" content="{{page.extra.image | safe}}">
+<meta name="twitter:card" content="summary_large_image" />
 {% else %}
 <meta name="twitter:image" content="{{config.base_url | safe }}/banner.png">
+<meta name="twitter:card" content="summary_large_image" />
+
 {% endif %}
 <meta name="twitter:site" content="@Kaporos">
 <meta name="description" content="{{page.summary}}">
