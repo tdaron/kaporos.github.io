@@ -20,7 +20,7 @@
 <br>
 
 {% set section = get_section(path="blog/_index.md") %}
-{% for page in section.pages | slice(end=10) %}
+{% for page in section.pages | reverse | slice(end=10) %}
     <div class="post">
         {% if page.extra.image %}
         <a href="{{page.path}}"><img src="{{page.extra.image}}" alt=""></a>

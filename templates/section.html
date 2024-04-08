@@ -2,7 +2,7 @@
 
 {% block content %}
 <h3>Do you prefer RSS? <a target="_blank" href="/atom.xml">It's here</a></h3>
-{% for page in section.pages %}
+{% for page in section.pages | reverse %}
     <div class="post">
         {% if page.extra.image %}
         <a href="{{page.path}}"><img src="{{page.extra.image}}" alt=""></a>

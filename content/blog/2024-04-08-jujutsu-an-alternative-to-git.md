@@ -21,6 +21,8 @@ I will use the word 'commit' for convenience, but in Jujutsu, a commit is referr
 
 There are some differences between Git and Jujutsu. One of the most significant ones, I believe, is that Jujutsu doesn't incorporate the concept of a "current branch" (though it does support branches).
 
+> A branch is just a pointer to a commit.
+
 In Git, when you make a commit, the branch you're currently on automatically updates to point to the new commit.
 
 However, with Jujutsu, making a commit doesn't affect any branches. Instead, you're always on what you could call an "anonymous branch," which essentially represents your current commit.

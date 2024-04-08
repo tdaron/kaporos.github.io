@@ -28,6 +28,10 @@ article {
     overflow-wrap: break-word;
     max-width: 85vw;
     overflow-x: hidden;
+    line-height: 1.8;
+    p {
+        margin-top: 15px;
+    }
 
 }
 
@@ -70,4 +74,13 @@ main {
         width: 50%;
         border-radius: 5px;
       }
+}
+
+blockquote {
+    background-color: rgba(0,0,0,.1);
+    padding: 15px;
+    border-radius: 5px;
+    p {
+        margin: 0;
+    }
 }
