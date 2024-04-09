@@ -56,7 +56,7 @@ However, in Jujutsu, you don't have these "uncommitted changes." Instead, all yo
 
 This has some interesting implications. For instance, there's no longer a need for the "stash" functionality. If you want to check out another revision, you can just do it. There's no requirement to make a dirty commit or stash to save the current working directory before switching to another revision, as changes you made already are saved in a revision.
 
-Moreover, it also means you can edit revisions in the past. In Jujutsu, you're allowed to check out a previous revision, make some changes, and it will automatically rebase all descendant commits on this edited revision.
+Moreover, it also means you can easily edit revisions in the past. In Jujutsu, you're allowed to check out a previous revision, make some changes, and it will automatically rebase all descendant commits on this edited revision.
 
 ## Conflicts resolutions
 
