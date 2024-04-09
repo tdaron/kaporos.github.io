@@ -24,7 +24,11 @@
         <title>{{ page.title }}</title>
         <published>{{ page.date | date(format="%+") }}</published>
         <updated>{{ page.updated | default(value=page.date) | date(format="%+") }}</updated>
-        <category term="sports"/>
+        {% if page.taxonomies.tags %}
+        {% for term in page.taxonomies.tags %}
+        <category term="{{term}}"/>
+        {% endfor %}
+        {% endif %}
         {% for author in page.authors %}
         <author>
           <name>
