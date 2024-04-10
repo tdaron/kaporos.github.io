@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h2 style="font-weight: bold;">What's on my bucket list ✨</h2>
+<br>
+
+This page contains everything i want to do in my life. Can be either huge achievements or small projects.
+<br>
+The last time I updated it was the {{page.updated | date(format="%d of %B %Y")}}.
+<br><br>
+
+For now, here's everything I've thought about doing one day:
+<br><br>
+
+{{page.content | safe}}
+
+{% endblock content %}
