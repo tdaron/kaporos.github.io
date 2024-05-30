@@ -1,7 +1,7 @@
 +++
 template="todo.html"
 updated=2024-05-31
-in_search_index=false
+in_search_index=true
 +++
 
 ## Big picture
