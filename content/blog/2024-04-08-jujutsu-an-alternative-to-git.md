@@ -66,7 +66,7 @@ So, if a conflict arises, no big deal. We can simply switch gears and work on so
 
 Now, if we decide to edit a past revision to resolve a conflict, this resolution automatically cascades down to all descendant commits, thanks to the magic of automatic rebasing when editing past revisions. Trust me, it makes life wonderful haha. 
 
-# So..should I switch to Jujutsu ?
+# So..should you switch to Jujutsu ?
 
 It wouldn't be fair to say that Jujutsu is superior to Git and that Git is terrible. Jujutsu aims to address some of Git's shortcomings while still retaining its fundamental concepts like commits (or revisions) and branches. Plus, it's compatible with Git repositories, which is pretty cool.
 
