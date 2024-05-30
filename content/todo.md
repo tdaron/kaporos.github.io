@@ -1,7 +1,9 @@
 +++
 template="todo.html"
 updated=2024-05-31
+date=2024-05-31
 in_search_index=true
+authors=["Théo Daron"]
 +++
 
 ## Big picture
