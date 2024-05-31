@@ -21,7 +21,7 @@ in_search_index=false
 - Writing my own window manager (*tdawm*)
 - Getting into freeBSD
 - Graph theory algorithms visualiser
-
+- NEAT Algorithm Implementation ([paper here](https://nn.cs.utexas.edu/downloads/papers/stanley.ec02.pdf))
 
 ## Self improvement
 - Become more disciplined
