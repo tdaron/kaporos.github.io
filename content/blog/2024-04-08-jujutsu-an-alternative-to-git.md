@@ -10,7 +10,7 @@ authors=["Théo Daron"]
 
 Now, Git has been around for a while. I mean, it first popped up back in 2005, so that's like two decades ago! But despite its age, Git is still the king of VCS. Why? Well, because it's darn good at what it does, and it's become a staple in developers' workflows.
 
-Jujutsu tries to solve problems Git has without reinventing the wheel as Jujutsu borrows a lot of concepts of Git, and ATM, as Jujutsu's native back-end is not finished yet, so they're using git as storage solution, making it **compatible with existing git repositories.**  
+Jujutsu tries to solve problems Git has without reinventing the wheel as Jujutsu borrows a lot of concepts of Git. Jujutsu wants to be polyvalent for its on-disk storage backend,so they include git as storage solution, making it **compatible with existing git repositories.**  
 
 (I'm currently using it to manage this blog, which happens to be hosted on Github)
 
