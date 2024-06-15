@@ -1,9 +1,9 @@
 +++
 template="now.html"
-updated=2024-05-31
+updated=2024-07-03
 in_search_index=false
 +++
 
-- Getting my engineering degree
-- Writing some content on this blog
-- Experimenting and learning things about fermentation 😋
+- Enjoying the holidays
+- [Writing my WM](https://github.com/tdaron/tdawm)
+- Contributing on some open source stuff
