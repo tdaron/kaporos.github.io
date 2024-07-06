@@ -11,3 +11,5 @@ This page contains a list of some ideas/things I wanna try in fermentation.
 - Various kosos
 - Pet'Nat (violet)
 - Kimchi
+- Lacto fermented vegetables
+    - Pumpkin 
