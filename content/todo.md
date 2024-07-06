@@ -18,7 +18,7 @@ in_search_index=false
 - Lucid dreams
 
 ## Projects
-- Writing my own window manager (*tdawm*)
+- Writing my own window manager (**[tdawm](https://github.com/tdaron/tdawm)**)
 - Writing a simulation based video game (something like dwarf fortress but simpler lmao)
 - Getting into freeBSD
 - Graph theory algorithms visualiser
