@@ -13,7 +13,7 @@ in_search_index=false
 ## Hobbies to explore
 
 - Gardening (fruit+vegetable cultivation and indoor plants)
-- Fermentation stuff
+- [Fermentation stuff](/fermentation)
 - Beekeeping
 - Lucid dreams
 
