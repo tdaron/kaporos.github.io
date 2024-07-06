@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en">
+    <title></title>
+    <link rel="self" type="application/atom+xml" href="https://theo.daron.be/atom.xml"/>
+    <link rel="alternate" type="text/html" href="https://theo.daron.be"/>
+    <generator uri="https://www.getzola.org/">Zola</generator>
+    <updated>2024-04-08T00:00:00+00:00</updated>
+    <id>https://theo.daron.be/atom.xml</id>
+    <entry xml:lang="en">
+        <title>Jujutsu: An alternative to git.</title>
+        <published>2024-04-08T00:00:00+00:00</published>
+        <updated>2024-04-08T00:00:00+00:00</updated>
+        
+        
+        <author>
+          <name>
+            Théo Daron
+          </name>
+        </author>
+        
+        <link rel="alternate" type="text/html" href="https://theo.daron.be/blog/jujutsu-an-alternative-to-git/"/>
+        <id>https://theo.daron.be/blog/jujutsu-an-alternative-to-git/</id>
+        
+        <content type="html" xml:base="https://theo.daron.be/blog/jujutsu-an-alternative-to-git/">&lt;h1 id=&quot;what-is-jujutsu&quot;&gt;What is Jujutsu&lt;&#x2F;h1&gt;
+&lt;p&gt;&lt;a href=&quot;https:&#x2F;&#x2F;martinvonz.github.io&#x2F;jj&#x2F;latest&quot;&gt;Jujutsu&lt;&#x2F;a&gt; is a Version Control System (VCS), just like Git, which means it helps developers work together on projects while keeping track of changes over time. It&#x27;s super handy, almost a must-have in today&#x27;s development world.&lt;&#x2F;p&gt;
+&lt;p&gt;Now, Git has been around for a while. I mean, it first popped up back in 2005, so that&#x27;s like two decades ago! But despite its age, Git is still the king of VCS. Why? Well, because it&#x27;s darn good at what it does, and it&#x27;s become a staple in developers&#x27; workflows.&lt;&#x2F;p&gt;
+&lt;p&gt;Jujutsu tries to solve problems Git has without reinventing the wheel as Jujutsu borrows a lot of concepts of Git. Jujutsu wants to be polyvalent for its on-disk storage backend,so they include git as storage solution, making it &lt;strong&gt;compatible with existing git repositories.&lt;&#x2F;strong&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;(I&#x27;m currently using it to manage this blog, which happens to be hosted on Github)&lt;&#x2F;p&gt;
+&lt;h1 id=&quot;jujutsu-concepts&quot;&gt;Jujutsu Concepts&lt;&#x2F;h1&gt;
+&lt;p&gt;I will use the word &#x27;commit&#x27; for convenience, but in Jujutsu, a commit is referred to as a revision.&lt;&#x2F;p&gt;
+&lt;h2 id=&quot;branches&quot;&gt;Branches&lt;&#x2F;h2&gt;
+&lt;p&gt;There are some differences between Git and Jujutsu. One of the most significant ones, I believe, is that Jujutsu doesn&#x27;t incorporate the concept of a &amp;quot;current branch&amp;quot; (though it does support branches).&lt;&#x2F;p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;A branch is just a pointer to a commit.&lt;&#x2F;p&gt;
+&lt;&#x2F;blockquote&gt;
+&lt;p&gt;In Git, when you make a commit, the branch you&#x27;re currently on automatically updates to point to the new commit.&lt;&#x2F;p&gt;
+&lt;p&gt;However, with Jujutsu, making a commit doesn&#x27;t affect any branches. Instead, you&#x27;re always on what you could call an &amp;quot;anonymous branch,&amp;quot; which essentially represents your current commit.&lt;&#x2F;p&gt;
+&lt;p&gt;For instance, take a look at this output from jj log (the Jujutsu equivalent of git log):&lt;&#x2F;p&gt;
+&lt;pre style=&quot;background-color:#2b303b;color:#c0c5ce;&quot;&gt;&lt;code&gt;&lt;span&gt;@  mwpvwptr theo@daron.be 2024-04-08 15:03:28 97d19080
+&lt;&#x2F;span&gt;&lt;span&gt;│  some great revision
+&lt;&#x2F;span&gt;&lt;span&gt;◉  pzxyqynk theo@daron.be 2024-04-08 15:02:59 cool-branch 4e950f42
+&lt;&#x2F;span&gt;&lt;span&gt;│  another edit of toto file
+&lt;&#x2F;span&gt;&lt;span&gt;│ ◉  pzwlrmqw theo@daron.be 2024-04-08 15:02:38 42c5ce44
+&lt;&#x2F;span&gt;&lt;span&gt;├─╯  editing toto file
+&lt;&#x2F;span&gt;&lt;span&gt;◉  rzzuolln theo@daron.be 2024-04-08 15:02:17 4fd2d439
+&lt;&#x2F;span&gt;&lt;span&gt;│  adding toto file
+&lt;&#x2F;span&gt;&lt;span&gt;◉  zzzzzzzz root() 00000000
+&lt;&#x2F;span&gt;&lt;span&gt;
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;You can see that I have a branch named cool-branch pointing to my &amp;quot;another edit of toto file&amp;quot; revision.&lt;&#x2F;p&gt;
+&lt;p&gt;However, for example, my &amp;quot;editing toto file&amp;quot; revision, which is in another branch, doesn&#x27;t have a branch name; it&#x27;s what we call an &amp;quot;anonymous branch.&amp;quot;&lt;&#x2F;p&gt;
+&lt;p&gt;And my current working revision is the latest one, denoted by an &amp;quot;@&amp;quot; symbol in front of it. As you can see, no branch currently points to it. But I could move my cool-branch to point to it using the command jj branch set cool-branch.&lt;&#x2F;p&gt;
+&lt;h2 id=&quot;no-working-directory&quot;&gt;No working directory&lt;&#x2F;h2&gt;
+&lt;p&gt;As you probably know, in Git, there&#x27;s something called the working directory, which essentially consists of any uncommitted changes inside your repository.&lt;&#x2F;p&gt;
+&lt;p&gt;However, in Jujutsu, you don&#x27;t have these &amp;quot;uncommitted changes.&amp;quot; Instead, all your changes are immediately added to your current revision. So, let&#x27;s say I&#x27;m currently on &amp;quot;some great revision,&amp;quot; and I make a change; that change gets automatically included in that same revision. This means that if we want to rename the revision after making more changes, we can. And if we want to name it before making changes to remember what we were doing, that&#x27;s possible too.&lt;&#x2F;p&gt;
+&lt;p&gt;This has some interesting implications. For instance, there&#x27;s no longer a need for the &amp;quot;stash&amp;quot; functionality. If you want to check out another revision, you can just do it. There&#x27;s no requirement to make a dirty commit or stash to save the current working directory before switching to another revision, as changes you made already are saved in a revision.&lt;&#x2F;p&gt;
+&lt;p&gt;Moreover, it also means you can easily edit revisions in the past. In Jujutsu, you&#x27;re allowed to check out a previous revision, make some changes, and it will automatically rebase all descendant commits on this edited revision.&lt;&#x2F;p&gt;
+&lt;h2 id=&quot;conflicts-resolutions&quot;&gt;Conflicts resolutions&lt;&#x2F;h2&gt;
+&lt;p&gt;Since Jujutsu doesn&#x27;t have a working directory concept, conflicts are handled differently. A revision can find itself in conflict with some parent revisions (for instance, when merging a branch). This conflict state gets stored within the revision itself, but you won&#x27;t find yourself stuck with merge conflicts in your current working directory like you might in Git.&lt;&#x2F;p&gt;
+&lt;p&gt;So, if a conflict arises, no big deal. We can simply switch gears and work on something else, knowing that we can tackle the conflicts later on.&lt;&#x2F;p&gt;
+&lt;p&gt;Now, if we decide to edit a past revision to resolve a conflict, this resolution automatically cascades down to all descendant commits, thanks to the magic of automatic rebasing when editing past revisions. Trust me, it makes life wonderful haha. &lt;&#x2F;p&gt;
+&lt;h1 id=&quot;so-should-you-switch-to-jujutsu&quot;&gt;So..should you switch to Jujutsu ?&lt;&#x2F;h1&gt;
+&lt;p&gt;It wouldn&#x27;t be fair to say that Jujutsu is superior to Git and that Git is terrible. Jujutsu aims to address some of Git&#x27;s shortcomings while still retaining its fundamental concepts like commits (or revisions) and branches. Plus, it&#x27;s compatible with Git repositories, which is pretty cool.&lt;&#x2F;p&gt;
+&lt;p&gt;In my experience, using Jujutsu is more enjoyable because it allows you to navigate your revision tree freely. It&#x27;s easier to edit past revisions and resolve conflicts since Jujutsu won&#x27;t leave you stuck in a state where you&#x27;re forced to fix something before you can continue working, unlike Git.&lt;&#x2F;p&gt;
+&lt;p&gt;I definitely recommend checking out Jujutsu&#x27;s website and GitHub repository. You might find it to be a valuable addition to your workflow. Here are the links: &lt;a href=&quot;https:&#x2F;&#x2F;martinvonz.github.io&#x2F;jj&#x2F;latest&quot;&gt;website&lt;&#x2F;a&gt; and &lt;a href=&quot;https:&#x2F;&#x2F;github.com&#x2F;martinvonz&#x2F;jj&quot;&gt;GitHub&lt;&#x2F;a&gt;.&lt;&#x2F;p&gt;
+</content>
+        
+    </entry>
+    <entry xml:lang="en">
+        <title>This blog !</title>
+        <published>2024-04-06T00:00:00+00:00</published>
+        <updated>2024-04-06T00:00:00+00:00</updated>
+        
+        
+        <author>
+          <name>
+            Théo Daron
+          </name>
+        </author>
+        
+        <link rel="alternate" type="text/html" href="https://theo.daron.be/projects/my-blog/"/>
+        <id>https://theo.daron.be/projects/my-blog/</id>
+        
+        <summary type="html">&lt;p&gt;This blog is my first &amp;quot;real&amp;quot; project. &lt;&#x2F;p&gt;
+&lt;p&gt;It&#x27;s a place meant to host my thoughts, my projects, things I wanna share :)&lt;&#x2F;p&gt;
+</summary>
+        
+    </entry>
+    <entry xml:lang="en">
+        <title>First blog post</title>
+        <published>2024-04-05T00:00:00+00:00</published>
+        <updated>2024-04-05T00:00:00+00:00</updated>
+        
+        
+        <author>
+          <name>
+            Théo Daron
+          </name>
+        </author>
+        
+        <link rel="alternate" type="text/html" href="https://theo.daron.be/blog/toto/"/>
+        <id>https://theo.daron.be/blog/toto/</id>
+        
+        <content type="html" xml:base="https://theo.daron.be/blog/toto/">&lt;h1 id=&quot;hello-world&quot;&gt;Hello, World !&lt;&#x2F;h1&gt;
+&lt;p&gt;Hello, World must be the base of anything.&lt;&#x2F;p&gt;
+</content>
+        
+    </entry>
+</feed>
