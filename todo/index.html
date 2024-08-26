@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <title>Théo&#x27;s universe</title>
+  <link rel="stylesheet" href="/public.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.10/dist/katex.min.css">
+  <script data-swup-ignore-script src="/libs/swup.js"></script>
+
+  <script data-swup-ignore-script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.10/dist/katex.min.js"></script>
+
+  <script data-swup-ignore-script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.10/dist/contrib/auto-render.min.js" onload="show_maths()"></script>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <script data-swup-ignore-script src="/libs/swup-progress.js"></script>
+  <script data-swup-ignore-script src="https://unpkg.com/@swup/scripts-plugin@2"></script>
+   
+  
+  <meta name="description" content="Hey my name is Théo, on this website I put my projects, some blog posts as well as funny garbage :)">
+  <meta property="og:title" content="Théo&#x27;s universe">
+  <meta property="og:description" content="Hey my name is Théo, on this website I put my projects, some blog posts as well as funny garbage :)">
+  <meta property="og:url" content="https://theo.daron.be">
+  <meta property="og:type" content="https://theo.daron.be">
+  <meta property="og:site_name" content="Théo&#x27;s universe">
+  <meta name="twitter:image" content="https://theo.daron.be/banner.png">
+  <meta property="og:image" content="https://theo.daron.be/banner.png">
+  <meta name="twitter:card" content="summary_large_image" />
+  
+  
+  
+</head>
+
+<body>
+  
+  <span id="load"></span>
+  <nav>
+  
+    <p id="brand"><a href="/">Théo&#x27;s universe.</a></p>
+
+    <ul>
+      <li><a href="/blog">Blog</a></li>
+      <li><a href="/projects">Projects</a></li>
+      <li><a href="/contact">Contact</a></li>
+      <li><a href="/todo">Bucket List</a></li>
+      <li><a href="/now">Now</a></li>
+    </ul>
+  </nav>
+
+  
+  <main id="swup" class="transition-fade">
+    <!--<div id="color" style="background-color: white"></div>-->
+    <div id="content">
+    
+<h2 style="font-weight: bold;">What's on my bucket list ✨</h2>
+<br>
+
+This page contains everything i want to do in my life. Can be either huge achievements or small projects.
+<br>
+The last time I updated it was the 31 of May 2024.
+<br><br>
+
+For now, here's everything I've thought about doing one day:
+<br><br>
+
+<h2 id="big-picture">Big picture</h2>
+<ul>
+<li>Getting my engineering degree</li>
+<li>Getting masters degree in applied mathematics (engineering),  biomed orientation.</li>
+<li>Get a (small) house with huge garden</li>
+<li>Get some children</li>
+</ul>
+<h2 id="hobbies-to-explore">Hobbies to explore</h2>
+<ul>
+<li>Gardening (fruit+vegetable cultivation and indoor plants)</li>
+<li><a href="/fermentation">Fermentation stuff</a></li>
+<li>Beekeeping</li>
+<li>Lucid dreams</li>
+</ul>
+<h2 id="projects">Projects</h2>
+<ul>
+<li>Writing my own window manager (<strong><a href="https://github.com/tdaron/tdawm">tdawm</a></strong>)</li>
+<li>Writing a simulation based video game (something like dwarf fortress but simpler lmao)</li>
+<li>Getting into freeBSD</li>
+<li>Graph theory algorithms visualiser</li>
+<li>NEAT Algorithm Implementation (<a href="https://nn.cs.utexas.edu/downloads/papers/stanley.ec02.pdf">paper here</a>) (there also is <a href="https://rlg.mlanctot.info/2021/papers/AAAI22-RLG_paper_32.pdf">MA-POCA Algorithm</a>)</li>
+</ul>
+<h2 id="self-improvement">Self improvement</h2>
+<ul>
+<li>Become more disciplined</li>
+<li>Become a sports guy (at least more than a vegetable)</li>
+<li>Skydiving ? (kinda scary)</li>
+</ul>
+
+
+
+    </div>
+
+    <div id="toc">
+       
+    </div>
+
+  </main>
+
+
+
+  <script data-swup-ignore-script>
+    function show_maths() {
+      renderMathInElement(document.body, {
+        // customised options
+        // • auto-render specific keys, e.g.:
+        delimiters: [
+          {left: '$$', right: '$$', display: true},
+          {left: '$', right: '$', display: false},
+          {left: '\\(', right: '\\)', display: false},
+          {left: '\\[', right: '\\]', display: true}
+        ],
+        // • rendering keys, e.g.:
+        throwOnError : false
+      });
+    }
+    const swup = new Swup({
+      plugins: [new SwupProgressPlugin(), new SwupScriptsPlugin()]
+    });
+    swup.hooks.on('page:view', (visit) => {
+      show_maths();
+    });
+
+    function getScrollPercent() {
+    var h = document.documentElement, 
+        b = document.body,
+        st = 'scrollTop',
+        sh = 'scrollHeight';
+    return (h[st]||b[st]) / ((h[sh]||b[sh]) - h.clientHeight) * 100;
+}
+    document.addEventListener("scroll", (event) => {
+
+      // Use the scroll percentage as needed
+      let percentage = getScrollPercent();
+      document.getElementById("load").style.width = percentage+"vw"
+    });
+  </script>
+
+
+</body>
+
+</html>
+

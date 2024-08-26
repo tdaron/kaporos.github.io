@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <title>Théo&#x27;s universe</title>
+  <link rel="stylesheet" href="/public.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.10/dist/katex.min.css">
+  <script data-swup-ignore-script src="/libs/swup.js"></script>
+
+  <script data-swup-ignore-script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.10/dist/katex.min.js"></script>
+
+  <script data-swup-ignore-script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.10/dist/contrib/auto-render.min.js" onload="show_maths()"></script>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <script data-swup-ignore-script src="/libs/swup-progress.js"></script>
+  <script data-swup-ignore-script src="https://unpkg.com/@swup/scripts-plugin@2"></script>
+   
+  
+  <meta name="description" content="Hey my name is Théo, on this website I put my projects, some blog posts as well as funny garbage :)">
+  <meta property="og:title" content="Théo&#x27;s universe">
+  <meta property="og:description" content="Hey my name is Théo, on this website I put my projects, some blog posts as well as funny garbage :)">
+  <meta property="og:url" content="https://theo.daron.be">
+  <meta property="og:type" content="https://theo.daron.be">
+  <meta property="og:site_name" content="Théo&#x27;s universe">
+  <meta name="twitter:image" content="https://theo.daron.be/banner.png">
+  <meta property="og:image" content="https://theo.daron.be/banner.png">
+  <meta name="twitter:card" content="summary_large_image" />
+  
+  
+  
+</head>
+
+<body>
+  
+  <span id="load"></span>
+  <nav>
+  
+    <p id="brand"><a href="/">Théo&#x27;s universe.</a></p>
+
+    <ul>
+      <li><a href="/blog">Blog</a></li>
+      <li><a href="/projects">Projects</a></li>
+      <li><a href="/contact">Contact</a></li>
+      <li><a href="/todo">Bucket List</a></li>
+      <li><a href="/now">Now</a></li>
+    </ul>
+  </nav>
+
+  
+  <main id="swup" class="transition-fade">
+    <!--<div id="color" style="background-color: white"></div>-->
+    <div id="content">
+    
+
+<h1 style="font-weight: bold;">Hey there ! 👋 </h1>
+
+<p>My name is <strong>Théo</strong> and I'm a </p>
+<ul style="list-style: none; margin-left: 25px;">
+    <li>☀️  Life enthusiast</li>
+    <li>🍻  Belgian beer lover   </li>
+    <li>📚 Engineering student  </li>
+    <li>💻 Hobbyist developer </li>
+</ul>
+
+<br>
+<p>On this website I put my projects, some blog posts as well as diverse garbage :)</p>
+<br>
+<h3 style="font-weight: bold;">Don't know where to start ?</h3>
+<p>Here are my last blog posts: </p>
+<br>
+
+
+
+    <div class="post">
+        
+        <a href="&#x2F;blog&#x2F;jujutsu-an-alternative-to-git&#x2F;" style="text-decoration: none;color: black;"><h3>Jujutsu: An alternative to git.</h3></a>
+        <p class="infos"> Théo Daron  - 2024-04-08 </p>
+        <span class="summary"></span>
+        
+    </div>
+
+    <div class="post">
+        
+        <a href="&#x2F;blog&#x2F;toto&#x2F;"><img src="https:&#x2F;&#x2F;learn.microsoft.com&#x2F;fr-fr&#x2F;shows&#x2F;hello-world&#x2F;media&#x2F;helloworld_383x215.png" alt=""></a>
+        
+        <a href="&#x2F;blog&#x2F;toto&#x2F;" style="text-decoration: none;color: black;"><h3>First blog post</h3></a>
+        <p class="infos"> Théo Daron  - 2024-04-05 </p>
+        <span class="summary"></span>
+        
+    </div>
+
+
+    </div>
+
+    <div id="toc">
+       
+    </div>
+
+  </main>
+
+
+
+  <script data-swup-ignore-script>
+    function show_maths() {
+      renderMathInElement(document.body, {
+        // customised options
+        // • auto-render specific keys, e.g.:
+        delimiters: [
+          {left: '$$', right: '$$', display: true},
+          {left: '$', right: '$', display: false},
+          {left: '\\(', right: '\\)', display: false},
+          {left: '\\[', right: '\\]', display: true}
+        ],
+        // • rendering keys, e.g.:
+        throwOnError : false
+      });
+    }
+    const swup = new Swup({
+      plugins: [new SwupProgressPlugin(), new SwupScriptsPlugin()]
+    });
+    swup.hooks.on('page:view', (visit) => {
+      show_maths();
+    });
+
+    function getScrollPercent() {
+    var h = document.documentElement, 
+        b = document.body,
+        st = 'scrollTop',
+        sh = 'scrollHeight';
+    return (h[st]||b[st]) / ((h[sh]||b[sh]) - h.clientHeight) * 100;
+}
+    document.addEventListener("scroll", (event) => {
+
+      // Use the scroll percentage as needed
+      let percentage = getScrollPercent();
+      document.getElementById("load").style.width = percentage+"vw"
+    });
+  </script>
+
+
+</body>
+
+</html>
+
