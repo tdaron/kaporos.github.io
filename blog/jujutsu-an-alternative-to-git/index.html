@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <title>Théo&#x27;s universe</title>
+  <link rel="stylesheet" href="/public.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.10/dist/katex.min.css">
+  <script data-swup-ignore-script src="/libs/swup.js"></script>
+
+  <script data-swup-ignore-script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.10/dist/katex.min.js"></script>
+
+  <script data-swup-ignore-script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.10/dist/contrib/auto-render.min.js" onload="show_maths()"></script>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <script data-swup-ignore-script src="/libs/swup-progress.js"></script>
+  <script data-swup-ignore-script src="https://unpkg.com/@swup/scripts-plugin@2"></script>
+  
+<meta property="og:title" content="Jujutsu: An alternative to git.">
+<meta property="og:description" content="">
+
+<meta property="og:image" content="https://theo.daron.be/banner.png">
+
+<meta property="og:url" content="https://theo.daron.be/blog/jujutsu-an-alternative-to-git/">
+<meta property="og:type" content="https://theo.daron.be">
+<meta property="og:site_name" content="Théo&#x27;s universe">
+
+<meta name="twitter:title" content="Jujutsu: An alternative to git.">
+<meta name="twitter:description" content="">
+
+<meta name="twitter:image" content="https://theo.daron.be/banner.png">
+<meta name="twitter:card" content="summary_large_image" />
+
+
+<meta name="twitter:site" content="@Kaporos">
+<meta name="description" content="">
+
+<meta name="robots" content="index, follow">
+
+</head>
+
+<body>
+  
+  <span id="load"></span>
+  <nav>
+  
+    <p id="brand"><a href="/">Théo&#x27;s universe.</a></p>
+
+    <ul>
+      <li><a href="/blog">Blog</a></li>
+      <li><a href="/projects">Projects</a></li>
+      <li><a href="/contact">Contact</a></li>
+      <li><a href="/todo">Bucket List</a></li>
+      <li><a href="/now">Now</a></li>
+    </ul>
+  </nav>
+
+  
+  <main id="swup" class="transition-fade">
+    <!--<div id="color" style="background-color: white"></div>-->
+    <div id="content">
+    
+<div class="header">
+    
+    <h1>Jujutsu: An alternative to git.</h1>
+    <p class="date"> 2024-04-08</p>
+</div>
+<article>
+    <br>
+    <h1 id="what-is-jujutsu">What is Jujutsu</h1>
+<p><a href="https://martinvonz.github.io/jj/latest">Jujutsu</a> is a Version Control System (VCS), just like Git, which means it helps developers work together on projects while keeping track of changes over time. It's super handy, almost a must-have in today's development world.</p>
+<p>Now, Git has been around for a while. I mean, it first popped up back in 2005, so that's like two decades ago! But despite its age, Git is still the king of VCS. Why? Well, because it's darn good at what it does, and it's become a staple in developers' workflows.</p>
+<p>Jujutsu tries to solve problems Git has without reinventing the wheel as Jujutsu borrows a lot of concepts of Git. Jujutsu wants to be polyvalent for its on-disk storage backend,so they include git as storage solution, making it <strong>compatible with existing git repositories.</strong></p>
+<p>(I'm currently using it to manage this blog, which happens to be hosted on Github)</p>
+<h1 id="jujutsu-concepts">Jujutsu Concepts</h1>
+<p>I will use the word 'commit' for convenience, but in Jujutsu, a commit is referred to as a revision.</p>
+<h2 id="branches">Branches</h2>
+<p>There are some differences between Git and Jujutsu. One of the most significant ones, I believe, is that Jujutsu doesn't incorporate the concept of a &quot;current branch&quot; (though it does support branches).</p>
+<blockquote>
+<p>A branch is just a pointer to a commit.</p>
+</blockquote>
+<p>In Git, when you make a commit, the branch you're currently on automatically updates to point to the new commit.</p>
+<p>However, with Jujutsu, making a commit doesn't affect any branches. Instead, you're always on what you could call an &quot;anonymous branch,&quot; which essentially represents your current commit.</p>
+<p>For instance, take a look at this output from jj log (the Jujutsu equivalent of git log):</p>
+<pre style="background-color:#2b303b;color:#c0c5ce;"><code><span>@  mwpvwptr theo@daron.be 2024-04-08 15:03:28 97d19080
+</span><span>│  some great revision
+</span><span>◉  pzxyqynk theo@daron.be 2024-04-08 15:02:59 cool-branch 4e950f42
+</span><span>│  another edit of toto file
+</span><span>│ ◉  pzwlrmqw theo@daron.be 2024-04-08 15:02:38 42c5ce44
+</span><span>├─╯  editing toto file
+</span><span>◉  rzzuolln theo@daron.be 2024-04-08 15:02:17 4fd2d439
+</span><span>│  adding toto file
+</span><span>◉  zzzzzzzz root() 00000000
+</span><span>
+</span></code></pre>
+<p>You can see that I have a branch named cool-branch pointing to my &quot;another edit of toto file&quot; revision.</p>
+<p>However, for example, my &quot;editing toto file&quot; revision, which is in another branch, doesn't have a branch name; it's what we call an &quot;anonymous branch.&quot;</p>
+<p>And my current working revision is the latest one, denoted by an &quot;@&quot; symbol in front of it. As you can see, no branch currently points to it. But I could move my cool-branch to point to it using the command jj branch set cool-branch.</p>
+<h2 id="no-working-directory">No working directory</h2>
+<p>As you probably know, in Git, there's something called the working directory, which essentially consists of any uncommitted changes inside your repository.</p>
+<p>However, in Jujutsu, you don't have these &quot;uncommitted changes.&quot; Instead, all your changes are immediately added to your current revision. So, let's say I'm currently on &quot;some great revision,&quot; and I make a change; that change gets automatically included in that same revision. This means that if we want to rename the revision after making more changes, we can. And if we want to name it before making changes to remember what we were doing, that's possible too.</p>
+<p>This has some interesting implications. For instance, there's no longer a need for the &quot;stash&quot; functionality. If you want to check out another revision, you can just do it. There's no requirement to make a dirty commit or stash to save the current working directory before switching to another revision, as changes you made already are saved in a revision.</p>
+<p>Moreover, it also means you can easily edit revisions in the past. In Jujutsu, you're allowed to check out a previous revision, make some changes, and it will automatically rebase all descendant commits on this edited revision.</p>
+<h2 id="conflicts-resolutions">Conflicts resolutions</h2>
+<p>Since Jujutsu doesn't have a working directory concept, conflicts are handled differently. A revision can find itself in conflict with some parent revisions (for instance, when merging a branch). This conflict state gets stored within the revision itself, but you won't find yourself stuck with merge conflicts in your current working directory like you might in Git.</p>
+<p>So, if a conflict arises, no big deal. We can simply switch gears and work on something else, knowing that we can tackle the conflicts later on.</p>
+<p>Now, if we decide to edit a past revision to resolve a conflict, this resolution automatically cascades down to all descendant commits, thanks to the magic of automatic rebasing when editing past revisions. Trust me, it makes life wonderful haha. </p>
+<h1 id="so-should-you-switch-to-jujutsu">So..should you switch to Jujutsu ?</h1>
+<p>It wouldn't be fair to say that Jujutsu is superior to Git and that Git is terrible. Jujutsu aims to address some of Git's shortcomings while still retaining its fundamental concepts like commits (or revisions) and branches. Plus, it's compatible with Git repositories, which is pretty cool.</p>
+<p>In my experience, using Jujutsu is more enjoyable because it allows you to navigate your revision tree freely. It's easier to edit past revisions and resolve conflicts since Jujutsu won't leave you stuck in a state where you're forced to fix something before you can continue working, unlike Git.</p>
+<p>I definitely recommend checking out Jujutsu's website and GitHub repository. You might find it to be a valuable addition to your workflow. Here are the links: <a href="https://martinvonz.github.io/jj/latest">website</a> and <a href="https://github.com/martinvonz/jj">GitHub</a>.</p>
+
+</article>
+<div class="giscus">
+
+</div>
+<script src="https://giscus.app/client.js"
+data-repo="Kaporos/kaporos.github.io"
+data-repo-id="R_kgDOLqVs6Q"
+data-category="General"
+data-category-id="DIC_kwDOLqVs6c4CejA_"
+data-mapping="pathname"
+data-strict="0"
+data-reactions-enabled="1"
+data-emit-metadata="0"
+data-input-position="top"
+data-theme="preferred_color_scheme"
+data-lang="fr"
+data-loading="lazy"
+crossorigin="anonymous"
+async>
+</script>
+
+
+
+    </div>
+
+    <div id="toc">
+      
+<div class="page-toc">
+
+    <h3>Table of contents</h3>
+    <ul style="list-style: '- ';">
+    
+        <li>
+            <a href="https://theo.daron.be/blog/jujutsu-an-alternative-to-git/#what-is-jujutsu">What is Jujutsu</a>
+            
+        </li>
+    
+        <li>
+            <a href="https://theo.daron.be/blog/jujutsu-an-alternative-to-git/#jujutsu-concepts">Jujutsu Concepts</a>
+            
+                <ul style="list-style: '- ';">
+                    
+                        <li>
+                            <a href="https://theo.daron.be/blog/jujutsu-an-alternative-to-git/#branches">Branches</a>
+                        </li>
+                    
+                        <li>
+                            <a href="https://theo.daron.be/blog/jujutsu-an-alternative-to-git/#no-working-directory">No working directory</a>
+                        </li>
+                    
+                        <li>
+                            <a href="https://theo.daron.be/blog/jujutsu-an-alternative-to-git/#conflicts-resolutions">Conflicts resolutions</a>
+                        </li>
+                    
+                </ul>
+            
+        </li>
+    
+        <li>
+            <a href="https://theo.daron.be/blog/jujutsu-an-alternative-to-git/#so-should-you-switch-to-jujutsu">So..should you switch to Jujutsu ?</a>
+            
+        </li>
+    
+    </ul>
+
+</div>
+
+    </div>
+
+  </main>
+
+
+
+  <script data-swup-ignore-script>
+    function show_maths() {
+      renderMathInElement(document.body, {
+        // customised options
+        // • auto-render specific keys, e.g.:
+        delimiters: [
+          {left: '$$', right: '$$', display: true},
+          {left: '$', right: '$', display: false},
+          {left: '\\(', right: '\\)', display: false},
+          {left: '\\[', right: '\\]', display: true}
+        ],
+        // • rendering keys, e.g.:
+        throwOnError : false
+      });
+    }
+    const swup = new Swup({
+      plugins: [new SwupProgressPlugin(), new SwupScriptsPlugin()]
+    });
+    swup.hooks.on('page:view', (visit) => {
+      show_maths();
+    });
+
+    function getScrollPercent() {
+    var h = document.documentElement, 
+        b = document.body,
+        st = 'scrollTop',
+        sh = 'scrollHeight';
+    return (h[st]||b[st]) / ((h[sh]||b[sh]) - h.clientHeight) * 100;
+}
+    document.addEventListener("scroll", (event) => {
+
+      // Use the scroll percentage as needed
+      let percentage = getScrollPercent();
+      document.getElementById("load").style.width = percentage+"vw"
+    });
+  </script>
+
+
+</body>
+
+</html>
+
